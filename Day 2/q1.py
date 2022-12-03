@@ -1,5 +1,3 @@
-elves = []
-
 matches = []
 
 with open("input.txt", "r") as f:
