@@ -3,10 +3,7 @@ vals_list = [[int(val) for val in line.rstrip().replace(",", "-").split("-")] fo
 def clamp(low, high, contain_vals, *vals):
 	return contain_vals and (len(vals) == 2 and low <= vals[0] <= vals[1] <= high) or (not contain_vals) and any([low <= val <= high for val in vals])
 
-total = sum([clamp(vals[0], vals[1], True, *vals[2:]) or clamp(vals[2], vals[3], True, *vals[:2]) for vals in vals_list])
-total_overlapping = sum([clamp(vals[0], vals[1], False, *vals[2:]) or clamp(vals[2], vals[3], False, *vals[:2]) for vals in vals_list])
-
-print(total, total_overlapping, sep = "\n")
+print(sum([clamp(vals[0], vals[1], True, *vals[2:]) or clamp(vals[2], vals[3], True, *vals[:2]) for vals in vals_list]), sum([clamp(vals[0], vals[1], False, *vals[2:]) or clamp(vals[2], vals[3], False, *vals[:2]) for vals in vals_list]), sep = "\n")
 
 # for line in lines:
 # 	vals = [int(value) for value in line.replace(",", "-").split("-")]
