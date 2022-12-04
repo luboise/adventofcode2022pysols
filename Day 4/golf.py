@@ -1,5 +1,5 @@
 with open("input.txt", "r") as f:
-	vals_list = [[int(val) for val in line.rstrip().replace(",", "-").split("-")] for line in f.readlines()]
+	vals_list = [[int(val) for val in line.rstrip().replace(",", "-").split("-")] for line in f]
 
 def clamp(low, high, contain_vals, *vals):
 	if contain_vals:
