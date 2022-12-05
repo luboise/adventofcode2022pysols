@@ -18,7 +18,7 @@ def parseInput(filename):
 
 			if moving:
 				# Add instruction tuple to stack
-				instruction = [int(value) for value in line[5:].replace("from ", "").replace("to ", "").split(" ")]
+				instruction = [int(value) for value in line.split(" ")[1::2]]
 
 				# Fix to/from to be indices
 				instruction[1] -= 1
