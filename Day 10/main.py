@@ -1,21 +1,32 @@
 class xregister:
 	def __init__(self, queue_length, init_value = 0):
-		self.cycle = 0
+		#self.cycle = 0
+		#self.queue = [None] * queue_length
+		
+		self.cycle = 1
 		self.xval = init_value
-		self.queue = [None] * queue_length
+		
 		self.signal_strengths = []
 
 	def queue_instruction(self, instruction):
-		self.parse_instruction(self.queue[0])
-		self.queue = self.queue[1:] + [instruction]
+		self.parse_instruction(instruction)
+		#self.parse_instruction(self.queue[0])
+		#self.queue = self.queue[1:] + [instruction]
 
 
 	def parse_instruction(self, instruction):
 		if instruction is None or instruction == "noop":
 			self.advance_cycle()
 		elif instruction.startswith("addx "):
-			self.xval += int(instruction[5:])
 			self.advance_cycle(2)
+
+			self.xval += int(instruction[5:])
+			#self.print_state()
+
+			
+			#self.advance_cycle()
+		
+		#self.print_state()
 		
 	def advance_cycle(self, amount = 1):
 		for i in range(amount):
@@ -42,7 +53,7 @@ class xregister:
 	def get_SS_sum(self):
 		return sum(self.signal_strengths)
 
-instructions = [line.rstrip() for line in open("input.txt", "r")]
+instructions = [line.rstrip() for line in open("gay.txt", "r")]
 
 my_reg = xregister(queue_length=2, init_value=0)
 
