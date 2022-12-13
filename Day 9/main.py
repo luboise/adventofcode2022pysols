@@ -73,3 +73,31 @@ for move in moves:
 		visited.add(tail.snap_to(head))
 
 print(len(visited))
+
+
+
+group_len = 10
+visited_group = set()
+visited_group.add((0, 0))
+
+node_group = list()
+
+for i in range(group_len):
+	node_group.append(ropeNode())
+
+head = node_group[0]
+tail = node_group[-1]
+
+for move in moves:
+	amount = int(move[2:])
+
+	move_x, move_y = parse_move_str(move)
+	
+	for i in range(abs(amount)):
+		head.move(move_x, move_y)
+		for j in range(1, len(node_group)):
+			node_group[j].snap_to(node_group[j - 1])
+
+		visited_group.add(tail.get_pos())
+
+print(len(visited_group))
