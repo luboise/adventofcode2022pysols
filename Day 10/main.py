@@ -53,7 +53,7 @@ class xregister:
 	def get_SS_sum(self):
 		return sum(self.signal_strengths)
 
-instructions = [line.rstrip() for line in open("gay.txt", "r")]
+instructions = [line.rstrip() for line in open("sample.txt", "r")]
 
 my_reg = xregister(queue_length=2, init_value=0)
 
