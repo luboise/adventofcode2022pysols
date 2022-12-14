@@ -16,8 +16,8 @@ class Monkey:
 			if relief_after_inspection:
 				self.items[0] = self.items[0] // 3
 
-			if super_div is not None:
-				self.items[0] %= super_div
+			if super_mod is not None:
+				self.items[0] %= super_mod
 
 			recipient_index = self.get_passing_monkey(self.items[0])
 			monkey_list[recipient_index].give_item(self.items.pop(0))
