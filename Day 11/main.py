@@ -8,7 +8,7 @@ class Monkey:
 
 		self.inspectioncount = 0
 
-	def pass_items(self, monkey_list, relief_after_inspection = True, super_div = None):
+	def pass_items(self, monkey_list, relief_after_inspection = True, super_mod = None):
 		for i in range(len(self.items)):
 			self.increment_inspection()
 			exec("self.items[0] = " + self.execstring.replace("old", str(self.items[0])))
@@ -85,12 +85,12 @@ print(inspection_counts[-2] * inspection_counts[-1])
 
 monkeys = get_monkeys_from_file("input.txt")
 
-super_div = list_product([monkey.get_modnum() for monkey in monkeys])
+super_mod = list_product([monkey.get_modnum() for monkey in monkeys])
 
 for i in range(10000):
 	print(f"Round {i+1}")
 	for monkey in monkeys:
-		monkey.pass_items(monkeys, relief_after_inspection = False, super_div = super_div)
+		monkey.pass_items(monkeys, relief_after_inspection = False, super_mod = super_mod)
 inspection_counts = sorted([monkey.get_inspection_count() for monkey in monkeys])
 print(inspection_counts[-2] * inspection_counts[-1])
 
